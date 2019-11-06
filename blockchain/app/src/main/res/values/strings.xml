@@ -3,4 +3,7 @@
     <string name="title_market">Market</string>
     <string name="title_swap">Swap</string>
     <string name="title_wallet">Wallet</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
 </resources>

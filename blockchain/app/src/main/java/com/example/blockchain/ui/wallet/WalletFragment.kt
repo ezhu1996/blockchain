@@ -24,7 +24,7 @@ class WalletFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_wallet, container, false)
         val textView: TextView = root.findViewById(R.id.text_wallet)
         walletViewModel.text.observe(this, Observer {
-            textView.text = it
+            //textView.text = it
         })
         return root
     }
