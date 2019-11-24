@@ -2,8 +2,11 @@
     <string name="app_name">blockchain</string>
     <string name="title_market">Market</string>
     <string name="title_swap">Swap</string>
-    <string name="title_wallet">Wallet</string>
+    <string name="title_wallet">My Wallet</string>
     <string name="login">Login</string>
-    <string name="username">Username</string>
+    <string name="register">Register</string>
+    <string name="username">Email</string>
     <string name="password">Password</string>
+    <string name="confirmPassword">Confirm Password</string>
+
 </resources>
