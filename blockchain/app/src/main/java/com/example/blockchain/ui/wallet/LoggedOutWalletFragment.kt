@@ -27,18 +27,15 @@ class WalletFragment : Fragment() {
         loginBtn = rootView?.findViewById(R.id.loginScreen)
 
         registerBtn?.setOnClickListener {
-
-            //            val intent = Intent(this@WalletFragment, RegistrationActivity::class.java)
-//            startActivity(intent)
+            val transaction: FragmentTransaction = fragmentManager!!.beginTransaction()
+            transaction.replace(this.id, RegisterFragment())
+            transaction.commit()
         }
 
         loginBtn?.setOnClickListener {
             val transaction: FragmentTransaction = fragmentManager!!.beginTransaction()
             transaction.replace(this.id, LoginFragment())
             transaction.commit()
-
-            //            val intent = Intent(this@MainActivity, LoginActivity::class.java)
-            //            startActivity(intent)
         }
         return rootView
 

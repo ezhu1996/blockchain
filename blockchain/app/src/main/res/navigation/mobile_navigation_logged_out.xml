@@ -19,7 +19,13 @@
 
     <fragment
         android:id="@+id/navigation_wallet"
-        android:name="com.example.blockchain.ui.wallet.WalletFragment"
+        android:name="com.example.blockchain.ui.wallet.LoggedOutWalletFragment"
         android:label="@string/title_wallet"
-        tools:layout="@layout/fragment_wallet" />
+        tools:layout="@layout/fragment_logged_out_wallet" />
+
+    <fragment
+        android:id="@+id/navigation_mywallet"
+        android:name="com.example.blockchain.ui.wallet.LoggedInWalletFragment"
+        android:label="@string/title_wallet"
+        tools:layout="@layout/fragment_logged_in_wallet" />
 </navigation>
