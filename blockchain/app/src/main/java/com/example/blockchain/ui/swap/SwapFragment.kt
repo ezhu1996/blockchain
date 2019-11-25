@@ -12,20 +12,13 @@ import com.example.blockchain.R
 
 class SwapFragment : Fragment() {
 
-    private lateinit var swapViewModel: SwapViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        swapViewModel =
-            ViewModelProviders.of(this).get(SwapViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_swap, container, false)
-        val textView: TextView = root.findViewById(R.id.text_swap)
-        swapViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
-        return root
+        val rootView: View? = inflater.inflate(R.layout.fragment_swap, container, false)
+        return rootView
     }
 }

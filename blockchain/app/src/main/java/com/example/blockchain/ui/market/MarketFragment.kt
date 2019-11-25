@@ -12,20 +12,13 @@ import com.example.blockchain.R
 
 class MarketFragment : Fragment() {
 
-    private lateinit var marketViewModel: MarketViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        marketViewModel =
-            ViewModelProviders.of(this).get(MarketViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_market, container, false)
-        val textView: TextView = root.findViewById(R.id.text_market)
-        marketViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
-        return root
+        super.onCreateView(inflater, container, savedInstanceState)
+        val rootView: View? = inflater.inflate(R.layout.fragment_market, container, false)
+        return rootView
     }
 }

@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.blockchain.R
 
-class WalletFragment : Fragment() {
+class LoggedOutWalletFragment : Fragment() {
 
 
     private var registerBtn: Button? = null
@@ -22,7 +22,7 @@ class WalletFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        val rootView: View? = inflater.inflate(R.layout.fragment_wallet, container, false)
+        val rootView: View? = inflater.inflate(R.layout.fragment_logged_out_wallet, container, false)
         registerBtn = rootView?.findViewById(R.id.registerScreen)
         loginBtn = rootView?.findViewById(R.id.loginScreen)
 
