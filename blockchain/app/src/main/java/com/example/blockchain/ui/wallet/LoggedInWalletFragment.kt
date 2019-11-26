@@ -1,6 +1,7 @@
 package com.example.blockchain.ui.wallet
 
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
@@ -17,19 +18,19 @@ import com.example.blockchain.MainActivity
 import com.example.blockchain.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import java.net.URL
 
 class LoggedInWalletFragment : Fragment() {
-    lateinit var rootView: View
-    lateinit var accountInfo: SharedPreferences
-    lateinit var signoutBtn: Button
-    lateinit var mAuth: FirebaseAuth
-    lateinit var mDatabase: FirebaseDatabase
-    lateinit var mDatabaseReference: DatabaseReference
-    lateinit var editor: SharedPreferences.Editor
-    lateinit var email: String
-    lateinit var addresses: MutableList<String>
-    lateinit var myListView: ListView
-    lateinit var newAddress: Button
+    private lateinit var rootView: View
+    private lateinit var accountInfo: SharedPreferences
+    private lateinit var signoutBtn: Button
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var mDatabase: FirebaseDatabase
+    private lateinit var mDatabaseReference: DatabaseReference
+    private lateinit var email: String
+    private lateinit var addresses: MutableList<String>
+    private lateinit var myListView: ListView
+    private lateinit var newAddress: Button
 
 
     @Override
@@ -62,6 +63,7 @@ class LoggedInWalletFragment : Fragment() {
         return rootView
     }
 
+    @SuppressLint("InflateParams")
     private fun addNewAddress() {
         val builder: AlertDialog.Builder = AlertDialog.Builder(activity!!)
         builder.setTitle("Enter BTC Address")
@@ -79,11 +81,28 @@ class LoggedInWalletFragment : Fragment() {
             if (TextUtils.isEmpty(address)) {
                 Toast.makeText(activity!!, "Please enter address...", Toast.LENGTH_LONG).show()
             } else {
-                //Saving the address
-                mDatabaseReference.child(address).setValue(true)
+                Thread {
+                    try {
+                        // only update if valid address
+                        URL("https://blockchain.info/q/addressbalance/$address").readText()
 
-                //displaying a success toast
-                Toast.makeText(activity!!, "Address saved", Toast.LENGTH_LONG).show()
+                        //Saving the address
+                        mDatabaseReference.child(address).setValue(true)
+
+                        activity!!.runOnUiThread {
+                            // displaying a success toast
+                            Toast.makeText(activity!!, "Address saved!", Toast.LENGTH_LONG).show()
+                        }
+                    } catch (e: Exception) {
+                        activity!!.runOnUiThread {
+                            Toast.makeText(
+                                activity!!,
+                                "Invalid Address: $address!",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+                }.start()
             }
         }
 
@@ -119,7 +138,6 @@ class LoggedInWalletFragment : Fragment() {
         mDatabaseReference = mDatabase.getReference("users").child(email)
         myListView = rootView.findViewById(R.id.addresses)
         addresses = ArrayList()
-        editor = accountInfo.edit()
         signoutBtn = rootView.findViewById(R.id.signout)
         mDatabaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -152,6 +170,7 @@ class LoggedInWalletFragment : Fragment() {
         return true
     }
 
+    @SuppressLint("InflateParams")
     private fun showUpdateDeleteDialog(address: String) {
         val dialogBuilder = AlertDialog.Builder(activity!!)
         val dialogView = activity!!.layoutInflater.inflate(R.layout.update_delete, null)
@@ -162,6 +181,7 @@ class LoggedInWalletFragment : Fragment() {
             .newEditable("Confirm Deletion of Address: $address")
 
         val buttonDelete = dialogView.findViewById<Button>(R.id.deleteAddress)
+        val buttonCancel = dialogView.findViewById<Button>(R.id.cancel)
 
         dialogBuilder.setTitle("Delete Address")
         val b = dialogBuilder.create()
@@ -169,6 +189,10 @@ class LoggedInWalletFragment : Fragment() {
 
         buttonDelete.setOnClickListener {
             deleteAddress(address)
+            b.dismiss()
+        }
+
+        buttonCancel.setOnClickListener {
             b.dismiss()
         }
     }

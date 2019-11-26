@@ -16,12 +16,12 @@ import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var accountInfo: SharedPreferences
-    lateinit var appBarConfiguration: AppBarConfiguration
-    lateinit var navController: NavController
-    lateinit var navView: BottomNavigationView
-    lateinit var editor: SharedPreferences.Editor
-    lateinit var mAuth: FirebaseAuth
+    private lateinit var accountInfo: SharedPreferences
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var navController: NavController
+    private lateinit var navView: BottomNavigationView
+    private lateinit var editor: SharedPreferences.Editor
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

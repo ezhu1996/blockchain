@@ -1,18 +1,24 @@
 package com.example.blockchain.ui.wallet
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
 import com.example.blockchain.R
+import java.io.FileNotFoundException
+import java.net.URL
 
 
-class AddressList(private val contxt: Context, internal var addresses: List<String>) : ArrayAdapter<String>(contxt, R.layout.address_list, addresses) {
+class AddressList(private val contxt: Context, private var addresses: MutableList<String>) :
+    ArrayAdapter<String>(contxt, R.layout.address_list, addresses) {
 
 
+    @SuppressLint("ViewHolder", "InflateParams")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val listViewItem = LayoutInflater.from(contxt).inflate(R.layout.address_list, null, false)
 
@@ -20,12 +26,27 @@ class AddressList(private val contxt: Context, internal var addresses: List<Stri
         val textViewAmount = listViewItem.findViewById<View>(R.id.textViewAmount) as TextView
 
         val address = addresses[position]
-        textViewAddress.text = address
 
         // call blockchain API here
-        textViewAmount.text = 0.toString()//author.authorCountry
-
+        Thread {
+            try {
+                val amount =
+                    URL("https://blockchain.info/q/addressbalance/$address").readText()
+                (context as FragmentActivity).runOnUiThread {
+                    textViewAmount.text = (amount.toFloat() / 100000000.0).toString()
+                    textViewAddress.text = address
+                }
+            } catch (e: FileNotFoundException) {
+                (context as FragmentActivity).runOnUiThread {
+                    addresses.remove(address)
+                    Toast.makeText(
+                        context as FragmentActivity,
+                        "Invalid Address: $address!",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        }.start()
         return listViewItem
     }
-
 }
