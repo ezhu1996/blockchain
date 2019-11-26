@@ -18,9 +18,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class RegisterFragment : Fragment() {
-
-    private var mDatabaseReference: DatabaseReference? = null
-    private var mDatabase: FirebaseDatabase? = null
     private var userEmail: EditText? = null
     private var userPassWord: EditText? = null
     private var registerBtn: Button? = null
@@ -49,11 +46,6 @@ class RegisterFragment : Fragment() {
         return rootView
     }
 
-    /* override fun onActivityCreated(savedInstanceState: Bundle?) {
-         super.onActivityCreated(savedInstanceState)
-         registerBtn!!.setOnClickListener { registerUserAccount() }
-
-     }*/
 
     private fun registerUserAccount() {
         progressBar?.visibility = View.VISIBLE
@@ -81,6 +73,7 @@ class RegisterFragment : Fragment() {
             if (task.isSuccessful) {
                 Toast.makeText(activity, "Registration successful!", Toast.LENGTH_LONG).show()
                 progressBar?.visibility = View.GONE
+                mAuth!!.signOut()
                 val transaction: FragmentTransaction = fragmentManager!!.beginTransaction()
                 transaction.replace(this.id, LoginFragment())
                 transaction.commit()
@@ -94,8 +87,5 @@ class RegisterFragment : Fragment() {
                 progressBar?.visibility = View.GONE
             }
         }
-
     }
-
-
 }

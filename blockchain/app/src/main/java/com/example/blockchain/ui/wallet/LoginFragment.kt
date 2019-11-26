@@ -2,6 +2,7 @@ package com.example.blockchain.ui.wallet
 
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.TextUtils
@@ -12,8 +13,16 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.example.blockchain.MainActivity
 import com.example.blockchain.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -39,7 +48,6 @@ class LoginFragment : Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         val rootView: View? = inflater.inflate(R.layout.fragment_login, container, false)
 
-
         mDatabase = FirebaseDatabase.getInstance()
         mDatabaseReference = mDatabase!!.reference.child("Email")
         mAuth = FirebaseAuth.getInstance()
@@ -54,11 +62,6 @@ class LoginFragment : Fragment() {
         return rootView
     }
 
-    /*  override fun onActivityCreated(savedInstanceState: Bundle?) {
-          super.onActivityCreated(savedInstanceState)
-          loginBtn!!.setOnClickListener { loginUserAccount() }
-
-      }*/
 
     private fun loginUserAccount() {
         progressBar?.visibility = View.VISIBLE
@@ -88,20 +91,8 @@ class LoginFragment : Fragment() {
                 editor.putBoolean("loggedIn", true)
                 editor.apply()
 
-                /*// change bottom nav bar
-                val navView: BottomNavigationView = activity!!.findViewById(R.id.nav_view_logged_out)
-                navView.menu.clear()
-                navView.inflateMenu(R.menu.logged_in_bottom_nav)
-
-                // change fragment
-                val transaction: FragmentTransaction = fragmentManager!!.beginTransaction()
-                transaction.replace(this.id, LoggedInWalletFragment())
-                transaction.commit()*/
-
-                // clear logged out bottom nav bar and go back to main activity but logged in
-                val navView: BottomNavigationView = activity!!.findViewById(R.id.nav_view_logged_out)
-                navView.menu.clear()
-                activity!!.onBackPressed()
+                // go back to main activity
+                activity!!.startActivity(Intent(activity!!, MainActivity::class.java))
             } else {
                 // failure
                 Toast.makeText(activity, "Wrong email and password combination.", Toast.LENGTH_LONG)

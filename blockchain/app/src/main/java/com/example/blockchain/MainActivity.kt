@@ -4,14 +4,21 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.blockchain.ui.market.MarketFragment
+import com.example.blockchain.ui.swap.SwapFragment
+import com.example.blockchain.ui.wallet.LoggedInWalletFragment
+import com.example.blockchain.ui.wallet.LoggedOutWalletFragment
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
@@ -29,9 +36,16 @@ class MainActivity : AppCompatActivity() {
 
         initialize()
 
-
-
         if (mAuth.currentUser != null) { // if they are already logged in
+            // update shared preferences
+            editor.putBoolean("loggedIn", true)
+            editor.apply()
+
+            // hide the logged out nav bar
+            findViewById<BottomNavigationView>(R.id.nav_view_logged_out).visibility = View.GONE
+            findViewById<BottomNavigationView>(R.id.nav_view_logged_in).visibility = View.VISIBLE
+
+            // set up the logged in nav bar
             navView = findViewById(R.id.nav_view_logged_in)
             navController = findNavController(R.id.nav_host_fragment_logged_in)
             appBarConfiguration = AppBarConfiguration(
@@ -39,8 +53,16 @@ class MainActivity : AppCompatActivity() {
                     R.id.navigation_market, R.id.navigation_swap, R.id.navigation_mywallet
                 )
             )
-            editor.putBoolean("loggedIn", true)
         } else { // they are not logged in
+            // update shared preferences
+            editor.putBoolean("loggedIn", false)
+            editor.apply()
+
+            // hide the logged in nav bar
+            findViewById<BottomNavigationView>(R.id.nav_view_logged_in).visibility = View.GONE
+            findViewById<BottomNavigationView>(R.id.nav_view_logged_out).visibility = View.VISIBLE
+
+            // set up the logged out nav bar
             navView = findViewById(R.id.nav_view_logged_out)
             navController = findNavController(R.id.nav_host_fragment_logged_out)
             appBarConfiguration = AppBarConfiguration(
@@ -48,14 +70,10 @@ class MainActivity : AppCompatActivity() {
                     R.id.navigation_market, R.id.navigation_swap, R.id.navigation_wallet
                 )
             )
-            editor.putBoolean("loggedIn", false)
         }
-        editor.apply()
-        // load proper nav bar
+        //load proper nav bar
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-
     }
 
     @SuppressLint("CommitPrefEdits")
