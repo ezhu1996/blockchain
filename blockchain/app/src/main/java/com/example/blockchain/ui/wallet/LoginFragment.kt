@@ -57,8 +57,6 @@ class LoginFragment : Fragment() {
         loginBtn?.setOnClickListener {
             loginUserAccount()
         }
-
-
         return rootView
     }
 
@@ -89,6 +87,7 @@ class LoginFragment : Fragment() {
                 // read in firebase items and put into sharedpreferences
                 val editor: SharedPreferences.Editor = accountInfo.edit()
                 editor.putBoolean("loggedIn", true)
+                editor.putString("email", email)
                 editor.apply()
 
                 // go back to main activity
@@ -100,8 +99,5 @@ class LoginFragment : Fragment() {
                 progressBar?.visibility = View.GONE
             }
         }
-
     }
-
-
 }

@@ -15,13 +15,21 @@
       },
       "oauth_client": [
         {
+          "client_id": "72161271351-j8efrd6aej9ofp0048mq3ap5jgc3o9g4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.blockchain",
+            "certificate_hash": "22bf92d1846ff66606f7832507d3dcf9a7e8b086"
+          }
+        },
+        {
           "client_id": "72161271351-1ct2b8mnn7f5on20oh4ni7tpefv7felp.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB6eNhpr_BS1SwxcoXQ-FGwOtv8VnWvzQw"
+          "current_key": "AIzaSyCq2K9D0DFidybkeg-sUg-JJkWpQ5FKYV0"
         }
       ],
       "services": {
