@@ -2,6 +2,7 @@ package com.example.blockchain.ui.wallet
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,11 @@ import java.io.FileNotFoundException
 import java.net.URL
 
 
-class AddressList(private val contxt: Context, private var addresses: MutableList<String>) :
+class AddressList(
+    private val contxt: Context,
+    private var addresses: MutableList<String>,
+    private var selected: String
+) :
     ArrayAdapter<String>(contxt, R.layout.address_list, addresses) {
 
 
@@ -33,6 +38,9 @@ class AddressList(private val contxt: Context, private var addresses: MutableLis
                 val amount =
                     URL("https://blockchain.info/q/addressbalance/$address").readText()
                 (context as FragmentActivity).runOnUiThread {
+                    if (address == selected) {
+                        listViewItem.setBackgroundColor(Color.LTGRAY)
+                    }
                     textViewAmount.text = (amount.toFloat() / 100000000.0).toString()
                     textViewAddress.text = address
                 }

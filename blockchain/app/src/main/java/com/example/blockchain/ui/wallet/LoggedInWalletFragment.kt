@@ -6,6 +6,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
@@ -59,6 +60,23 @@ class LoggedInWalletFragment : Fragment() {
                 val address = addresses[i]
                 showUpdateDeleteDialog(address)
                 true
+            }
+
+        // event listener for selecting address
+        myListView.onItemClickListener =
+            AdapterView.OnItemClickListener { adapterView, view, i, _ ->
+                // unhighlight previous selected
+                for (j in 0..adapterView.childCount) {
+                    val child = adapterView.getChildAt(j)
+                    child?.setBackgroundColor(Color.TRANSPARENT)
+                }
+
+                // update selected Address
+                val editor: SharedPreferences.Editor = accountInfo.edit()
+                editor.putString("selectedAddress", addresses[i])
+                editor.apply()
+                // set selected
+                view.setBackgroundColor(Color.LTGRAY)
             }
         return rootView
     }
@@ -116,13 +134,8 @@ class LoggedInWalletFragment : Fragment() {
 
     private fun signoutUserAccount() {
         mAuth.signOut()
-        val accountInfo: SharedPreferences =
-            activity!!.getSharedPreferences("accountInfo", Context.MODE_PRIVATE)
-
-        // read in firebase items and put into sharedpreferences
         val editor: SharedPreferences.Editor = accountInfo.edit()
-        editor.putBoolean("loggedIn", false)
-        editor.putString("email", null)
+        editor.putString("selectedAddress", "")
         editor.apply()
 
         // go back to main activity
@@ -150,8 +163,9 @@ class LoggedInWalletFragment : Fragment() {
                     val address = postSnapshot.key
                     addresses.add(address!!)
                 }
+                val selected = accountInfo.getString("selectedAddress", "")
                 //creating adapter using AddressList
-                val addressListAdapter = AddressList(activity!!, addresses)
+                val addressListAdapter = AddressList(activity!!, addresses, selected!!)
                 //attaching adapter to the listview
                 myListView.adapter = addressListAdapter
             }

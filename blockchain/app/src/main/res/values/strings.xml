@@ -17,5 +17,6 @@
     <string name="address">Address</string>
     <string name="btc">BTC</string>
     <string name="cancel">Cancel</string>
+    <string name="no_address_selected">No Address Selected (Showing Default Value of 1 BTC)</string>
 
 </resources>
