@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var navView: BottomNavigationView
     private lateinit var editor: SharedPreferences.Editor
-    private lateinit var mAuth: FirebaseAuth
+    lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,9 @@ class MainActivity : AppCompatActivity() {
             editor.putBoolean("loggedIn", true)
             editor.apply()
 
+
             // hide the logged out nav bar
+            findViewById<View>(R.id.nav_host_fragment_logged_out).visibility = View.GONE
             findViewById<BottomNavigationView>(R.id.nav_view_logged_out).visibility = View.GONE
             findViewById<BottomNavigationView>(R.id.nav_view_logged_in).visibility = View.VISIBLE
 
@@ -52,6 +54,7 @@ class MainActivity : AppCompatActivity() {
             editor.apply()
 
             // hide the logged in nav bar
+            findViewById<View>(R.id.nav_host_fragment_logged_in).visibility = View.GONE
             findViewById<BottomNavigationView>(R.id.nav_view_logged_in).visibility = View.GONE
             findViewById<BottomNavigationView>(R.id.nav_view_logged_out).visibility = View.VISIBLE
 

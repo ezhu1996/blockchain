@@ -18,5 +18,6 @@
     <string name="btc">BTC</string>
     <string name="cancel">Cancel</string>
     <string name="no_address_selected">No Address Selected (Showing Default Value of 1 BTC)</string>
+    <string name="market_prices">Market Prices</string>
 
 </resources>
