@@ -2,6 +2,7 @@ package com.example.blockchain.ui.market
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,7 +43,13 @@ class CryptoList(
         textViewCryptoCurrencySymbol.text = cryptoCurrencySymbol
         textViewCryptoCurrencyAmount.text =
             "$" + String.format("%.2f", cryptoCurrencyAmount.toDouble()).toDouble().toString()
-        textViewCryptoCurrencyChange.text = String.format("%.3f", cryptoCurrencyChange.toDouble()).toDouble().toString()
+        textViewCryptoCurrencyChange.text = String.format("%.3f", cryptoCurrencyChange.toDouble()).toDouble().toString() + "%"
+        if (textViewCryptoCurrencyChange.text[0] == '-') {
+            textViewCryptoCurrencyChange.setTextColor(Color.parseColor("#d23f31"))
+        } else {
+            textViewCryptoCurrencyChange.text = "+" + textViewCryptoCurrencyChange.text
+            textViewCryptoCurrencyChange.setTextColor(Color.parseColor("#0f9d58"))
+        }
         return listViewItem
     }
 }

@@ -16,7 +16,6 @@ class MarketFragment : Fragment() {
     private lateinit var rootView: View
     private lateinit var cryptoList: MutableList<CryptoCurrency>
     private lateinit var myListView: ListView
-    private lateinit var marketViewModel: MarketViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
