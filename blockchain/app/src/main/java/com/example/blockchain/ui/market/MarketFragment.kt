@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.example.blockchain.R
@@ -38,10 +39,20 @@ class MarketFragment : Fragment() {
                 (context as FragmentActivity).runOnUiThread {
                     for (i in 0 until market.length()) {
                         val crypto = JSONObject(market.get(i).toString())
+                        var amount = crypto.getString("priceUsd")
+                        if (crypto.getString("symbol") == "BTC") {
+                            val btc = Thread {
+                                amount = JSONObject(URL("https://api.coinbase.com/v2/prices/BTC-USD/spot").readText()).getJSONObject(
+                                    "data"
+                                ).getString("amount")
+                            }
+                            btc.start()
+                            btc.join()
+                        }
                         cryptoList.add(
                             CryptoCurrency(
                                 crypto.getString("name"),
-                                crypto.getString("priceUsd"),
+                                amount,
                                 crypto.getString("symbol"),
                                 crypto.getString("changePercent24Hr")
                             )
