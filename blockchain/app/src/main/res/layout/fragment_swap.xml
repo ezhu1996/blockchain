@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#303437"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -19,6 +20,7 @@
         android:text="@string/no_address_selected"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="#edeeef"
         tools:ignore="LabelFor" />
 
     <LinearLayout
@@ -38,9 +40,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_weight="65"
+            android:backgroundTint="#ffffff"
             android:importantForAutofill="no"
             android:inputType="numberDecimal"
             android:text="1.0"
+            android:textColor="#ffffff"
             tools:ignore="HardcodedText,LabelFor">
 
         </EditText>
@@ -53,6 +57,7 @@
             android:importantForAutofill="no"
             android:text="@string/btc"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="#edeeef"
             android:textStyle="bold" />
 
         <ImageButton
@@ -62,6 +67,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:src="@drawable/refresh"
+            android:tint="#edeeef"
             tools:ignore="ContentDescription" />
 
 
@@ -72,6 +78,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp" />
+        android:layout_marginEnd="15dp"
+        android:divider="#9e7367"
+        android:dividerHeight="1dp" />
 
 </LinearLayout>

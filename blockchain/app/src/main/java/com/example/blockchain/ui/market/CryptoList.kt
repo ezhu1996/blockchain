@@ -37,13 +37,17 @@ class CryptoList(
         val cryptoCurrencySymbol = cryptoCurrency.getCurrencySymbol()
         val cryptoCurrencyAmount = cryptoCurrency.getCurrencyValue()
         val cryptoCurrencyChange = cryptoCurrency.getChange24Hours()
+        textViewCryptoCurrencyAmount.setTextColor(Color.parseColor("#edeeef"))
+        textViewCryptoCurrencySymbol.setTextColor(Color.parseColor("#a9a9a9"))
+        textViewCryptoCurrencyName.setTextColor(Color.parseColor("#edeeef"))
 
 
         textViewCryptoCurrencyName.text = cryptoCurrencyName
         textViewCryptoCurrencySymbol.text = cryptoCurrencySymbol
         textViewCryptoCurrencyAmount.text =
             "$" + String.format("%.2f", cryptoCurrencyAmount.toDouble()).toDouble().toString()
-        textViewCryptoCurrencyChange.text = String.format("%.3f", cryptoCurrencyChange.toDouble()).toDouble().toString() + "%"
+        textViewCryptoCurrencyChange.text =
+            String.format("%.3f", cryptoCurrencyChange.toDouble()).toDouble().toString() + "%"
         if (textViewCryptoCurrencyChange.text[0] == '-') {
             textViewCryptoCurrencyChange.setTextColor(Color.parseColor("#d23f31"))
         } else {

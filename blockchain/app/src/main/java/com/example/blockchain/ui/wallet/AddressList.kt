@@ -39,7 +39,7 @@ class AddressList(
                     URL("https://blockchain.info/q/addressbalance/$address").readText()
                 (context as FragmentActivity).runOnUiThread {
                     if (address == selected) {
-                        listViewItem.setBackgroundColor(Color.LTGRAY)
+                        listViewItem.setBackgroundColor(Color.parseColor("#303437"))
                     }
                     textViewAmount.text = (amount.toFloat() / 100000000.0).toString()
                     textViewAddress.text = address

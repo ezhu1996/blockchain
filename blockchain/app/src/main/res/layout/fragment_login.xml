@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#303437"
     android:orientation="vertical">
 
 
@@ -23,22 +24,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:autofillHints="example@example.com"
+            android:backgroundTint="#ffffff"
             android:ems="10"
             android:inputType="textEmailAddress"
-            tools:ignore="LabelFor" />
+            tools:ignore="LabelFor"
+            android:textColor="#edeeef"/>
 
         <TextView
             android:id="@+id/usernameLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
-            android:text="@string/username" />
+            android:text="@string/username"
+            android:textColor="#ffffff" />
 
         <EditText
             android:id="@+id/password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:textColor="#edeeef"
+            android:backgroundTint="#ffffff"
             android:ems="10"
             android:importantForAutofill="no"
             android:inputType="textPassword"
@@ -50,7 +56,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
-            android:text="@string/password" />
+            android:text="@string/password"
+            android:textColor="#ffffff" />
 
 
         <Button

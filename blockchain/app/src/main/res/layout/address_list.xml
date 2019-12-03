@@ -2,24 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#303437"
     android:orientation="horizontal"
-    android:weightSum="100">
+    android:weightSum="100"
+    >
 
     <TextView
         android:id="@+id/textViewAddress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="70"
         android:text="@string/no_addresses_added_yet"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:layout_weight="70"/>
+        android:textColor="#cfcbc8"
+        android:backgroundTint="#303437"/>
+
     <TextView
         android:id="@+id/textViewAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="30"
         android:gravity="end"
         android:text="@string/zero"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:layout_weight="30"/>
-
+        android:textColor="#cfcbc8" />
 </LinearLayout>
 

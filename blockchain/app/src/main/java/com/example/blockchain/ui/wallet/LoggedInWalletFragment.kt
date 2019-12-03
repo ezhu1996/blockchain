@@ -76,7 +76,7 @@ class LoggedInWalletFragment : Fragment() {
                 editor.putString("selectedAddress", addresses[i])
                 editor.apply()
                 // set selected
-                view.setBackgroundColor(Color.LTGRAY)
+                view.setBackgroundColor(Color.parseColor("#9e7367"))
             }
         return rootView
     }

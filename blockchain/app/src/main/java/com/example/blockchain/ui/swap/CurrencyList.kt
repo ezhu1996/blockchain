@@ -2,6 +2,7 @@ package com.example.blockchain.ui.swap
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +33,9 @@ class CurrencyList(
         val currencyName = currency.getCurrencyName()
         val currencyValue = currency.getCurrencyValue()
         val currencySymbol = currency.getCurrencySymbol()
+
+        textViewCurrency.setTextColor(Color.parseColor("#efeeef"))
+        textViewCurrencyAmount.setTextColor(Color.parseColor("#edeeef"))
 
 
         textViewCurrency.text = currencyName

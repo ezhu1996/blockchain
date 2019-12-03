@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#303437"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -19,6 +20,7 @@
         android:text="@string/market_prices"
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="#edeeef"
         tools:ignore="LabelFor" />
 
     <ListView
@@ -26,6 +28,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp" />
+        android:layout_marginEnd="15dp"
+        android:divider="#9e7367"
+        android:dividerHeight="1dp" />
 
 </LinearLayout>
