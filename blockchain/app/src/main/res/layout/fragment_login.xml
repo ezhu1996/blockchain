@@ -28,7 +28,8 @@
             android:ems="10"
             android:inputType="textEmailAddress"
             tools:ignore="LabelFor"
-            android:textColor="#edeeef"/>
+            android:textColor="#edeeef"
+            android:fontFamily="@font/opensans"/>
 
         <TextView
             android:id="@+id/usernameLabel"
@@ -36,7 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:text="@string/username"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:fontFamily="@font/opensans"/>
 
         <EditText
             android:id="@+id/password"
@@ -48,7 +50,8 @@
             android:ems="10"
             android:importantForAutofill="no"
             android:inputType="textPassword"
-            tools:ignore="LabelFor" />
+            tools:ignore="LabelFor"
+            android:fontFamily="@font/opensans"/>
 
 
         <TextView
@@ -57,7 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:text="@string/password"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:fontFamily="@font/opensans"/>
 
 
         <Button
@@ -65,6 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:fontFamily="@font/opensans"
             android:layout_marginTop="35dp"
             android:text="@string/login" />
     </LinearLayout>

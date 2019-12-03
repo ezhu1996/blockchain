@@ -2,18 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/activity_horizontal_margin"
     android:background="#303437"
-    >
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin">
 
 
     <TextView
         android:id="@+id/confirm"
-        android:textColor="#edeeef"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/opensans"
+        android:textColor="#edeeef" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/opensans"
             android:text="@string/delete" />
 
         <Button
@@ -35,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/opensans"
             android:text="@string/cancel" />
 
     </LinearLayout>

@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/opensans"
         android:layout_marginBottom="5dp"
         android:layout_weight="1"
         android:text="@string/add_new_wallet"
@@ -35,6 +36,7 @@
             android:text="@string/address"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textColor="#edeeef"
+            android:fontFamily="@font/opensans"
             android:textStyle="bold" />
 
         <TextView
@@ -42,6 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end"
+            android:fontFamily="@font/opensans"
             android:text="@string/btc"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textColor="#edeeef"
@@ -60,6 +63,7 @@
     <Button
         android:id="@+id/signout"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/opensans"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"

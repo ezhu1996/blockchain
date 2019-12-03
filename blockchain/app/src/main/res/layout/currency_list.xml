@@ -10,6 +10,7 @@
     <TextView
         android:id="@+id/textViewCurrency"
         android:layout_width="0dp"
+        android:fontFamily="@font/opensans"
         android:layout_height="wrap_content"
         android:layout_weight="70"
         android:text=""
@@ -18,6 +19,7 @@
     <TextView
         android:id="@+id/textViewCurrencyAmount"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/opensans"
         android:layout_height="wrap_content"
         android:layout_weight="30"
         android:gravity="end"

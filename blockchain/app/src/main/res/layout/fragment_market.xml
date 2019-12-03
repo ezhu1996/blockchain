@@ -21,7 +21,8 @@
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textColor="#edeeef"
-        tools:ignore="LabelFor" />
+        tools:ignore="LabelFor"
+        android:fontFamily="@font/opensans"/>
 
     <ListView
         android:id="@+id/cryptoCurrencies"

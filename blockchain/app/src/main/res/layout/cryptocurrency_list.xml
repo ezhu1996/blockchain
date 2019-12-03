@@ -17,6 +17,7 @@
             android:id="@+id/textViewCryptoCurrencyName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/opensans"
             android:text=""
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
@@ -24,6 +25,7 @@
             android:id="@+id/textViewCryptoCurrencySymbol"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/opensans"
             android:text=""
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
     </LinearLayout>
@@ -40,6 +42,7 @@
             android:id="@+id/textViewCryptoCurrencyAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/opensans"
             android:gravity="end"
             android:text=""
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
@@ -48,6 +51,7 @@
             android:id="@+id/textViewCryptoCurrencyChange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/opensans"
             android:gravity="end"
             android:text=""
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />

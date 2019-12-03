@@ -4,24 +4,25 @@
     android:layout_height="match_parent"
     android:background="#303437"
     android:orientation="horizontal"
-    android:weightSum="100"
-    >
+    android:weightSum="100">
 
     <TextView
         android:id="@+id/textViewAddress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="70"
+        android:backgroundTint="#303437"
+        android:fontFamily="@font/opensans"
         android:text="@string/no_addresses_added_yet"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:textColor="#cfcbc8"
-        android:backgroundTint="#303437"/>
+        android:textColor="#cfcbc8" />
 
     <TextView
         android:id="@+id/textViewAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="30"
+        android:fontFamily="@font/opensans"
         android:gravity="end"
         android:text="@string/zero"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"

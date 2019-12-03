@@ -21,7 +21,8 @@
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textColor="#edeeef"
-        tools:ignore="LabelFor" />
+        tools:ignore="LabelFor"
+        android:fontFamily="@font/opensans"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,6 +43,7 @@
             android:layout_weight="65"
             android:backgroundTint="#ffffff"
             android:importantForAutofill="no"
+            android:fontFamily="@font/opensans"
             android:inputType="numberDecimal"
             android:text="1.0"
             android:textColor="#ffffff"
@@ -53,6 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
+            android:fontFamily="@font/opensans"
             android:gravity="center"
             android:importantForAutofill="no"
             android:text="@string/btc"
