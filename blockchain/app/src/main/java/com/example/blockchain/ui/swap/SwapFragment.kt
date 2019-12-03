@@ -58,7 +58,11 @@ class SwapFragment : Fragment() {
     }
 
     private fun refreshToCurrentAddressAmount() {
-        swapAmount.setText(selectedAddressAmount)
+        if (selectedAddressAmount != "") {
+            swapAmount.setText(selectedAddressAmount)
+        } else {
+            swapAmount.setText("1.0")
+        }
     }
 
     @SuppressLint("SetTextI18n")
