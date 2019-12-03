@@ -58,7 +58,7 @@ class SwapFragment : Fragment() {
     }
 
     private fun refreshToCurrentAddressAmount() {
-        if (selectedAddressAmount != "") {
+        if (selectedAddress != "") {
             swapAmount.setText(selectedAddressAmount)
         } else {
             swapAmount.setText("1.0")
